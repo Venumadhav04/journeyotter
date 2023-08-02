@@ -1,0 +1,41 @@
+<!-- views/todoDetails.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo Details</title>
+</head>
+
+<body>
+    <h1>Todo Details</h1>
+    <p>Title: <%= todos.title %>
+    </p>
+    <p>Description: <%= todos.description %>
+    </p>
+    <p>Expected time: <%= todos.todotime %>
+    </p>
+
+    <h2>Edit Todo</h2>
+
+    <form action="/todolist/<%= todos._id %>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= todos.title %>" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required><%= todos.description %></textarea>
+        <br>
+        <label for="todotime">Expected time:</label>
+        <input type="text" id="todotime" name="todotime" value="<%= todos.todotime %>" required>
+        <button type="submit">Update</button>
+        <a href="/todolist">Cancel</a>
+    </form>
+
+    <form action="/todolist/<%= todos._id %>?_method=DELETE" method="POST">
+        <p>Are you sure you want to delete this todo?</p>
+        <button type="submit">Delete</button>
+        <a href="/todolist">Cancel</a>
+    </form>
+</body>
+
+</html>
